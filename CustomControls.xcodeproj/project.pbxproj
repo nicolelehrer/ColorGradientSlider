@@ -16,6 +16,7 @@
 		A224315A1BE8752100D51271 /* CustomControlsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22431591BE8752100D51271 /* CustomControlsUITests.swift */; };
 		A22431681BE87DB000D51271 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22431671BE87DB000D51271 /* CustomSlider.swift */; };
 		A224316A1BE9220200D51271 /* CustomThumbLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22431691BE9220200D51271 /* CustomThumbLayer.swift */; };
+		A224316E1BEBC96500D51271 /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A224316D1BEBC96500D51271 /* CGColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		A224315B1BE8752100D51271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A22431671BE87DB000D51271 /* CustomSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		A22431691BE9220200D51271 /* CustomThumbLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomThumbLayer.swift; sourceTree = "<group>"; };
+		A224316D1BEBC96500D51271 /* CGColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		A224312D1BE8752000D51271 = {
 			isa = PBXGroup;
 			children = (
+				A224316D1BEBC96500D51271 /* CGColorExtension.swift */,
 				A22431671BE87DB000D51271 /* CustomSlider.swift */,
 				A22431691BE9220200D51271 /* CustomThumbLayer.swift */,
 				A22431381BE8752100D51271 /* CustomControls */,
@@ -263,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A224316E1BEBC96500D51271 /* CGColorExtension.swift in Sources */,
 				A224313C1BE8752100D51271 /* ViewController.swift in Sources */,
 				A224316A1BE9220200D51271 /* CustomThumbLayer.swift in Sources */,
 				A22431681BE87DB000D51271 /* CustomSlider.swift in Sources */,
