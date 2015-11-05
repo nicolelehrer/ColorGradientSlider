@@ -46,7 +46,6 @@ class ViewController: UIViewController, CustomSliderDelegate {
         for subview in view.subviews{
             if let slider = subview as? CustomSlider{
                 if slider.componentID != fromComponent{
-                    slider.thumbLayer.backgroundColor = color
                     slider.mainColorComponents = color.getComponents()
                 }
             }

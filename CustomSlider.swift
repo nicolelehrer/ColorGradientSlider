@@ -31,6 +31,7 @@ class CustomSlider: UIControl {
         didSet{
             print("main color was set")
             trackLayer.colors = [startColor, endColor]
+            thumbLayer.backgroundColor = UIColor(red: mainColorComponents[0], green: mainColorComponents[1], blue: mainColorComponents[2], alpha: 1.0).CGColor
 
         }
     }
