@@ -13,16 +13,30 @@
 import UIKit
 import QuartzCore
 
+protocol CustomSliderDelegate{
+    func update(fromComponent:Int, color:CGColor)
+}
+
 class CustomSlider: UIControl {
     var minimumValue = 0.0
     var maximumValue = 1.0
     let trackLayer = CAGradientLayer()
     let thumbLayer = CustomThumbLayer()
     var previousLocation = CGPoint()
-    let mainColorComponents:[CGFloat] = [0.7, 0.2, 0.0, 1.0]
     var sliderValue:Double = 0
     var componentID:Int
+    var delegate:CustomSliderDelegate?
 
+    var mainColorComponents:[CGFloat] = [0.7, 0.2, 0.0, 1.0]{
+        didSet{
+            print("main color was set")
+            trackLayer.colors = [startColor, endColor]
+
+        }
+    }
+
+    
+    
     var thumbHeight:CGFloat{
         return CGFloat(bounds.height)
     }
@@ -42,20 +56,22 @@ class CustomSlider: UIControl {
     }
     
   
-    init(frame: CGRect, componentID:Int) {
+    init(frame: CGRect, componentID:Int, delegate:CustomSliderDelegate?) {
         self.componentID = componentID
+        self.delegate = delegate
         super.init(frame: frame)
         self.initialize()
     }
     
     required init?(coder aDecoder: NSCoder) {
+        self.delegate = nil
         self.componentID = 0
         super.init(coder: aDecoder)
         self.initialize()
     }
     
     convenience init() {
-        self.init(frame: CGRectZero, componentID:0)
+        self.init(frame: CGRectZero, componentID:0, delegate:nil)
         self.initialize()
     }
     
@@ -73,12 +89,6 @@ class CustomSlider: UIControl {
         NSLog("common init")
     }
     
-   
-    
-   
-    
-    
-    
     func calcComponentDelta(start: UnsafePointer<CGFloat>, end: UnsafePointer<CGFloat>, index:Int)->CGFloat{
         let diff:CGFloat = start[index] - end[index]
         if diff > 0 {
@@ -90,23 +100,16 @@ class CustomSlider: UIControl {
         }
         return start[index]
     }
-    
-    func convert(length: Int, data: UnsafePointer<CGFloat>) -> [CGFloat] {
-        let buffer = UnsafeBufferPointer(start: data, count: length)
-        return Array(buffer)
-    }
+
     
     var thumbColor:CGColor{
-        
-        let startComponents = convert(5, data: CGColorGetComponents(startColor))
-        let endComponents = convert(5, data: CGColorGetComponents(endColor))
-        
-        print("start is \(startComponents)")
-        print("end is \(endComponents)")
 
-        let r = calcComponentDelta(startComponents, end:endComponents, index:0)
-        let g = calcComponentDelta(startComponents, end:endComponents, index:1)
-        let b = calcComponentDelta(startComponents, end:endComponents, index:2)
+        let start = startColor.getComponents()
+        let end =  endColor.getComponents()
+        
+        let r = calcComponentDelta(start, end:end, index:0)
+        let g = calcComponentDelta(start, end:end, index:1)
+        let b = calcComponentDelta(start, end:end, index:2)
         
         let color = UIColor(red: r, green: g, blue: b, alpha: 1.0)
         return color.CGColor
@@ -175,7 +178,7 @@ class CustomSlider: UIControl {
         
         sendActionsForControlEvents(.ValueChanged)
         thumbLayer.backgroundColor = thumbColor
-
+        delegate?.update(componentID, color:thumbColor)
         return true
     }
     
