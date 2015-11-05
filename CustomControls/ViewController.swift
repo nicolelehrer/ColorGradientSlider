@@ -10,14 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let customSlider = CustomSlider(frame:CGRectZero)
-    let customSlider1 = CustomSlider(frame:CGRectZero)
-    let customSlider2 = CustomSlider(frame:CGRectZero)
-    
+    let customSlider = CustomSlider(frame:CGRectZero, componentID:0)
+    let customSlider1 = CustomSlider(frame:CGRectZero, componentID:1)
+    let customSlider2 = CustomSlider(frame:CGRectZero, componentID:2)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        customSlider.backgroundColor = UIColor.redColor()
         view.addSubview(customSlider)
         view.addSubview(customSlider1)
         view.addSubview(customSlider2)
@@ -27,7 +25,7 @@ class ViewController: UIViewController {
     }
     
     func customSliderValueChanged(slider: CustomSlider) {
-//        print("Range slider value changed: \(slider.value)")
+//        print("Range slider value changed: \(slider.slideValue)")
     }
 
     override func viewDidLayoutSubviews() {
